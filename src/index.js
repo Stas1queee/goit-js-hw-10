@@ -12,17 +12,20 @@ refs = {
   list: document.querySelector('ul'),
   container: document.querySelector('.country-info'),
 };
+
+
 const MAX_COUNTRIES = 10;
 let input = '';
+
+// слухаємо інпут 
 refs.input.addEventListener(
   'input',
   debounce(e => {
     input = e.target.value.trim(' ');
-    refs.list.innerHTML = '';
-    refs.container.innerHTML = '';
+    inputClear();
     if (!input) {
       return;
-    }
+    };
     fetchCountries(START_URL, input)
       .then(data => {
         if (data.length > MAX_COUNTRIES) {
@@ -39,6 +42,11 @@ refs.input.addEventListener(
   }, DEBOUNCE_DELAY)
 );
 
+// окремі функціі очистки і створення розмітки
+function inputClear() {
+      refs.list.innerHTML = '';
+      refs.container.innerHTML = '';
+}
 function markupCountries(items) {
   return items
     .map(
