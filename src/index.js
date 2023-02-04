@@ -7,7 +7,7 @@ const DEBOUNCE_DELAY = 300;
 
 const START_URL = 'https://restcountries.com/v2/name/';
 
-refs = {
+const refs = {
   input: document.getElementById('search-box'),
   list: document.querySelector('ul'),
   container: document.querySelector('.country-info'),
